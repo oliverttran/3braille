@@ -18,7 +18,31 @@ class Cube {
     
     updateCS() {
         this.cs = [0, 0, 0, 0];
-        console.log(this.cubie + "\nturned into\n" + this.cs);
+
+        //Orientation
+        for(let i=6; i>=0; i--)
+            this.cs[0] += this.corners[6-i][1] * Math.pow(3, i);
+        for(let i=10; i>=0; i--)
+            this.cs[1] += this.edges[10-i][1] * Math.pow(2, i);
+
+        //Permutation
+        const cPerm = [0, 0, 0, 0, 0, 0, 0, 0];
+        for(let j=0; j<this.corners[0][0]; j++)
+                cPerm[j]++;
+        for(let i=1; i<8; i++) {
+            for(let j=0; j<this.corners[i][0]; j++)
+                cPerm[j]++;
+            this.cs[2] += cPerm[this.corners[i][0]]*factorial(i);
+        }
+
+        const ePerm = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        for(let j=0; j<this.edges[0][0]; j++)
+                ePerm[j]++;
+        for(let i=1; i<8; i++) {
+            for(let j=0; j<this.edges[i][0]; j++)
+                ePerm[j]++;
+            this.cs[3] += ePerm[this.edges[i][0]]*factorial(i);
+        }
     }
 
     permute(c, e, turns) {
@@ -126,4 +150,10 @@ class Cube {
             }
         }
     }
+}
+
+function factorial(n) {
+    if(n == 1)
+        return 1;
+    return n * factorial(n-1);
 }
