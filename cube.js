@@ -2,7 +2,7 @@
 //0.URF 1.UFL 2.ULB 3.UBR 4.DFR 5.DLF 6.DBL 7.DRB
 //0.UR 1.UF 2.UL 3.UB 4.DR 5.DF 6.DL 7.DB 8.FR 9.FL 10.BL 11.BR
 
-class Cube {
+export class Cube {
     constructor(corners, edges) {
         if (arguments.length === 2) {
             this.corners = corners;
@@ -130,22 +130,22 @@ class Cube {
 
             switch(series[i].charAt(0).toUpperCase()) {
                 case 'F':
-                    cube.f(turns);
+                    this.f(turns);
                     break;
                 case 'B':
-                    cube.b(turns);
+                    this.b(turns);
                     break;
                 case 'R':
-                    cube.r(turns);
+                    this.r(turns);
                     break;
                 case 'L':
-                    cube.l(turns);
+                    this.l(turns);
                     break;
                 case 'U':
-                    cube.u(turns);
+                    this.u(turns);
                     break;
                 case 'D':
-                    cube.d(turns);
+                    this.d(turns);
                     break;
             }
         }
